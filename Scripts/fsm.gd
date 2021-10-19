@@ -1,5 +1,6 @@
 extends Node2D
 class_name StateMachine
+#Based on: https://www.youtube.com/watch?v=BNU8xNRk_oU Game Endeavor "How to build a Simple State Machine"
 
 var state = null setget set_state;
 var previous_state = null;
