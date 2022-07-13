@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/Animated Sprites/EnemyPieWalk.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Scripts/scr_enemy_areabody.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 128, 10 )
+
+[node name="AreaEnemy" type="Area2D" groups=[
+"enemies",
+]]
+script = ExtResource( 2 )
+
+[node name="spr_enemy" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 2.38419e-07 )
+scale = Vector2( 1, 1.28 )
+frames = ExtResource( 1 )
+animation = "Idle"
+speed_scale = 2.0
+
+[node name="col_enemy" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="AI" type="Node2D" parent="."]
+
+[node name="vision" type="Area2D" parent="AI"]
+
+[node name="col_vision" type="CollisionShape2D" parent="AI/vision"]
+visible = false
+position = Vector2( 64, 0 )
+shape = SubResource( 2 )

@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Tilemaps/temple/tile_temple.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/scr_portal.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 64 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.105882, 0.105882, 0.105882, 0.705882 )
+
+[node name="Portal" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="spr_portal" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 128, 96, 128 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="canvas_portal" type="CanvasLayer" parent="."]
+
+[node name="box_key_prompt" type="Panel" parent="canvas_portal"]
+visible = false
+anchor_left = 0.469
+anchor_top = 0.907
+anchor_right = 0.531
+anchor_bottom = 0.96
+margin_left = -32.256
+margin_top = -0.200012
+margin_right = 32.2559
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="hbox" type="HBoxContainer" parent="canvas_portal/box_key_prompt"]
+anchor_left = 0.125
+anchor_right = 0.875
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 2
+custom_constants/separation = 15
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_key" type="Label" parent="canvas_portal/box_key_prompt/hbox"]
+margin_left = 7.0
+margin_top = 9.0
+margin_right = 15.0
+margin_bottom = 23.0
+custom_colors/font_color = Color( 0.545098, 1, 0.733333, 1 )
+text = "Z"
+
+[node name="label_action" type="Label" parent="canvas_portal/box_key_prompt/hbox"]
+margin_left = 30.0
+margin_top = 9.0
+margin_right = 87.0
+margin_bottom = 23.0
+text = "Enter"

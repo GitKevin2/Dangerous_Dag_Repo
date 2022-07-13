@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/scr_revive_prompt.gd" type="Script" id=1]
+[ext_resource path="res://_Misc/Fonts/Marker Felt.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.105882, 0.105882, 0.105882, 0.705882 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+[node name="RevivePrompt" type="Panel"]
+anchor_right = 0.125
+anchor_bottom = 0.213
+margin_bottom = -7.62939e-06
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="padding" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox" type="VBoxContainer" parent="padding"]
+margin_left = 39.0
+margin_top = 19.0
+margin_right = 88.0
+margin_bottom = 107.0
+custom_constants/separation = 10
+
+[node name="text" type="Label" parent="padding/vbox"]
+margin_right = 49.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 2 )
+text = "Revive"
+align = 1
+
+[node name="text_key" type="Label" parent="padding/vbox"]
+margin_top = 37.0
+margin_right = 49.0
+margin_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 0
+custom_fonts/font = SubResource( 3 )
+text = "F"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bar_countdown" type="ProgressBar" parent="padding/vbox"]
+margin_top = 87.0
+margin_right = 49.0
+margin_bottom = 88.0
+custom_styles/fg = SubResource( 4 )
+max_value = 5.0
+value = 5.0
+percent_visible = false
+
+[node name="chance_timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

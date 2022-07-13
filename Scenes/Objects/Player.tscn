@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Sprites/Animated Sprites/Player.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Scripts/scr_player.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Interactions/RevivePrompt.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/fsm_player.gd" type="Script" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 16.0
+height = 24.0
+
+[node name="Player" type="KinematicBody2D" groups=[
+"players",
+]]
+collision_layer = 19
+collision_mask = 8
+script = ExtResource( 2 )
+
+[node name="spr_player" type="AnimatedSprite" parent="."]
+z_index = 1
+frames = ExtResource( 1 )
+animation = "Idle"
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 2.00226 )
+shape = SubResource( 1 )
+
+[node name="pos_muzzle" type="Position2D" parent="."]
+visible = false
+position = Vector2( 31.6465, 12.4645 )
+
+[node name="cam_player" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+editor_draw_limits = true
+
+[node name="RevivePrompt" parent="." instance=ExtResource( 3 )]
+visible = false
+margin_left = -64.0
+margin_top = -192.0
+margin_right = 64.0
+margin_bottom = -64.0
+
+[node name="AI" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="label_state" type="Label" parent="AI"]
+visible = false
+margin_left = -16.0
+margin_top = -64.0
+margin_right = 16.0
+margin_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+text = "State"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

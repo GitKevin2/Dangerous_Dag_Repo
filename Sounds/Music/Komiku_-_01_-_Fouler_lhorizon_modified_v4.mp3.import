@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Komiku_-_01_-_Fouler_lhorizon_modified_v4.mp3-631a6589d797efff3f436d4e823a3af8.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/Komiku_-_01_-_Fouler_lhorizon_modified_v4.mp3"
+dest_files=[ "res://.import/Komiku_-_01_-_Fouler_lhorizon_modified_v4.mp3-631a6589d797efff3f436d4e823a3af8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

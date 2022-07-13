@@ -1,0 +1,3 @@
+Press A (left wall) and D (right wall) on wall to wall-slide.
+When on the wall, press W (jump) to wall-jump.
+...

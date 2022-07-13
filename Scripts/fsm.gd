@@ -1,4 +1,3 @@
-#Reference: https://www.youtube.com/watch?v=BNU8xNRk_oU | Game Endeavor "How to Make a Simple State Machine in Godot"
 extends Node2D
 class_name StateMachine
 

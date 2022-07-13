@@ -1,5 +1,5 @@
 extends Area2D
-class_name Portal, "res://_Misc/Icons/icon_next.png"
+class_name MyPortal, "res://_Misc/Icons/icon_next.png"
 
 # Declare member variables here. Examples:
 export(String, FILE, "*.tscn") var next_scene;

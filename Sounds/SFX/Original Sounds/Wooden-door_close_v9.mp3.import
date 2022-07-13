@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Wooden-door_close_v9.mp3-1f4153de6aadb33c501fa0a31b5bac04.mp3str"
+
+[deps]
+
+source_file="res://Sounds/SFX/Original Sounds/Wooden-door_close_v9.mp3"
+dest_files=[ "res://.import/Wooden-door_close_v9.mp3-1f4153de6aadb33c501fa0a31b5bac04.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

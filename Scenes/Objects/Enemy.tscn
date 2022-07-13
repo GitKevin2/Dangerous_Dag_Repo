@@ -1,0 +1,205 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Sprites/Animated Sprites/EnemyPieWalk.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Scripts/scr_enemy.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/fsm_enemy.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 32.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Die"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr_enemy:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Dead" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("spr_enemy:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "FadeIn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr_enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("spr_enemy:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Revive" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr_enemy:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("spr_enemy:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("spr_enemy:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("spr_enemy:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 128.0
+
+[node name="Enemy" type="KinematicBody2D" groups=[
+"enemies",
+]]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="spr_enemy" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 2.38419e-07 )
+scale = Vector2( 1, 1.28 )
+frames = ExtResource( 1 )
+animation = "Idle"
+
+[node name="col_enemy" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="shoot_cooldown" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="death_timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="anim_enemy_active" type="AnimationPlayer" parent="."]
+anims/Die = SubResource( 2 )
+anims/FadeIn = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+
+[node name="AI" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="vision" type="Area2D" parent="AI"]
+
+[node name="col_vision" type="CollisionShape2D" parent="AI/vision"]
+visible = false
+shape = SubResource( 5 )
+
+[node name="ray_detect" type="RayCast2D" parent="AI/vision"]
+enabled = true
+cast_to = Vector2( 0, 0 )
+collision_mask = 16
+
+[node name="label_state" type="Label" parent="AI"]
+visible = false
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 64.0
+margin_bottom = -32.0
+text = "State"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="alert_timer" type="Timer" parent="AI"]
+wait_time = 10.0
+one_shot = true
+
+[node name="pos_muzzle" type="Position2D" parent="."]
+position = Vector2( 32, 0 )

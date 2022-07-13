@@ -1,0 +1,40 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/scr_trigger_torch.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Trigger Objects/Lamp_unlit.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Trigger Objects/Lamp_lit_1.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Trigger Objects/Lamp_lit_0.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Trigger Objects/Lamp_lit_2.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Trigger Objects/Lamp_lit_3.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Trigger Objects/Lamp_lit_4.png" type="Texture" id=7]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.0
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Lit",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Unlit",
+"speed": 5.0
+} ]
+
+[node name="TorchTrigger" type="Area2D"]
+script = ExtResource( 1 )
+Actor_Objects = [ "res://Scripts/scr_projectile.gd" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -8 )
+shape = SubResource( 1 )
+
+[node name="spr_torch" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.375, 0.25 )
+frames = SubResource( 2 )
+animation = "Unlit"
+
+[node name="anim_torch" type="AnimationPlayer" parent="."]

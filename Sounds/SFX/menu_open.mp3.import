@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/menu_open.mp3-9e569edbf9d36e08d3882b0b2d512e67.mp3str"
+
+[deps]
+
+source_file="res://Sounds/SFX/menu_open.mp3"
+dest_files=[ "res://.import/menu_open.mp3-9e569edbf9d36e08d3882b0b2d512e67.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

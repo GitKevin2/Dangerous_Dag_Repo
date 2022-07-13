@@ -1,5 +1,5 @@
 extends Node2D
-class_name World2
+
 
 onready var player: Player = $Player;
 

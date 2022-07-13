@@ -1,0 +1,33 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=2]
+
+[ext_resource path="res://Sprites/Enemy/EnemyPie_walk2_2.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Enemy/EnemyPie_walk6_2.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Enemy/EnemyPie_idle0.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Enemy/EnemyPie_walk0.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Enemy/EnemyPie_walk4.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Enemy/EnemyPie_idle0_gray.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Enemy/EnemyPie_idle0_silhouette_glow.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Enemy/EnemyPie_idle0_silhouette_white.png" type="Texture" id=8]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "Revive",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "Dead",
+"speed": 8.0
+} ]

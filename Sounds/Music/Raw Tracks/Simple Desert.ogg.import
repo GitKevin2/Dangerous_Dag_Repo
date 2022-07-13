@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Simple Desert.ogg-d7cbc5b6931c231f312634a0b4577a3e.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Music/Raw Tracks/Simple Desert.ogg"
+dest_files=[ "res://.import/Simple Desert.ogg-d7cbc5b6931c231f312634a0b4577a3e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

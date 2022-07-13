@@ -1,0 +1,321 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Tilemaps/ts_pyramid.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Backgrounds/bg_desert.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/scr_background.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/scr_outro.gd" type="Script" id=5]
+[ext_resource path="res://_Misc/Fonts/Marker Felt.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://_Misc/Fonts/outro_font_small.tres" type="DynamicFont" id=9]
+[ext_resource path="res://Tilemaps/temple/tile_temple.png" type="Texture" id=10]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 54
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Active"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Panel/label_level:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Panel/label_complete:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../levels_end/canvas/box_key_prompt:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Inactive"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 128 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.105882, 0.105882, 0.105882, 0.705882 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32, 32 )
+
+[node name="Outro" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="background" type="ParallaxBackground" parent="."]
+script = ExtResource( 4 )
+
+[node name="bg_desert" type="TextureRect" parent="background"]
+anchor_right = 1.0
+anchor_bottom = 1.013
+margin_bottom = 0.200012
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 3 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="end_screen" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="end_screen"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.013
+margin_bottom = 0.200012
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_level" type="Label" parent="end_screen/Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 448.0
+margin_top = 224.0
+margin_right = -442.0
+margin_bottom = -355.0
+custom_fonts/font = ExtResource( 9 )
+text = "The Desert"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_complete" type="Label" parent="end_screen/Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 416.0
+margin_top = 256.0
+margin_right = -414.0
+margin_bottom = -276.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 0.788235, 0.490196, 1 )
+text = "Complete"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="anim_end" type="AnimationPlayer" parent="end_screen"]
+anims/Active = SubResource( 6 )
+anims/Inactive = SubResource( 7 )
+
+[node name="spr_portal" type="Sprite" parent="."]
+position = Vector2( -480, 160 )
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 0, 128, 96, 128 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 524272, 1, 0, 524273, 1, 0, 524274, 1, 0, 524275, 1, 0, 524276, 1, 0, 524277, 1, 0, 524278, 1, 0, 524279, 1, 0, 524280, 1, 0, 524281, 1, 0, 524282, 1, 0, 524283, 1, 0, 524284, 1, 0, 524285, 1, 0, 524286, 1, 0, 524287, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 1, 0, 458773, 1, 0, 458774, 1, 0, 458775, 1, 0, 458776, 1, 0, 458777, 1, 0, 458778, 1, 0, 458779, 1, 0, 458780, 1, 0, 458781, 1, 0, 458782, 1, 0, 458783, 1, 0, 458784, 1, 0, 458785, 1, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( -448, 192 )
+
+[node name="levels_end" type="Area2D" parent="."]
+position = Vector2( 1024, 192 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levels_end"]
+position = Vector2( -32, -96 )
+shape = SubResource( 1 )
+
+[node name="canvas" type="CanvasLayer" parent="levels_end"]
+
+[node name="box_key_prompt" type="Panel" parent="levels_end/canvas"]
+visible = false
+anchor_left = 0.469
+anchor_top = 0.907
+anchor_right = 0.531
+anchor_bottom = 0.96
+margin_left = -32.256
+margin_top = -0.200012
+margin_right = 32.2559
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="hbox" type="HBoxContainer" parent="levels_end/canvas/box_key_prompt"]
+anchor_left = 0.125
+anchor_right = 0.875
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 2
+custom_constants/separation = 15
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_key" type="Label" parent="levels_end/canvas/box_key_prompt/hbox"]
+margin_left = 7.0
+margin_top = 9.0
+margin_right = 15.0
+margin_bottom = 23.0
+custom_colors/font_color = Color( 0.545098, 1, 0.733333, 1 )
+text = "Z"
+
+[node name="label_action" type="Label" parent="levels_end/canvas/box_key_prompt/hbox"]
+margin_left = 30.0
+margin_top = 9.0
+margin_right = 87.0
+margin_bottom = 23.0
+text = "Continue"
+
+[node name="edge_left" type="StaticBody2D" parent="."]
+position = Vector2( -544, 192 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edge_left"]
+shape = SubResource( 3 )
+
+[node name="edge_left2" type="StaticBody2D" parent="edge_left"]
+position = Vector2( 0, -64 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edge_left/edge_left2"]
+shape = SubResource( 3 )
+
+[node name="edge_left3" type="StaticBody2D" parent="edge_left"]
+position = Vector2( 0, -128 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edge_left/edge_left3"]
+shape = SubResource( 3 )
+
+[node name="edge_left4" type="StaticBody2D" parent="edge_left"]
+position = Vector2( 0, -192 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edge_left/edge_left4"]
+shape = SubResource( 3 )
+
+[node name="edge_right" type="StaticBody2D" parent="."]
+position = Vector2( 1056, 192 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edge_right"]
+shape = SubResource( 3 )
+
+[node name="edge_left2" type="StaticBody2D" parent="edge_right"]
+position = Vector2( 0, -64 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edge_right/edge_left2"]
+shape = SubResource( 3 )
+
+[node name="edge_left3" type="StaticBody2D" parent="edge_right"]
+position = Vector2( 0, -128 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edge_right/edge_left3"]
+shape = SubResource( 3 )
+
+[node name="edge_left4" type="StaticBody2D" parent="edge_right"]
+position = Vector2( 0, -192 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edge_right/edge_left4"]
+shape = SubResource( 3 )
+
+[node name="edge_bottom" type="StaticBody2D" parent="."]
+position = Vector2( 352, 256 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edge_bottom"]
+shape = SubResource( 3 )

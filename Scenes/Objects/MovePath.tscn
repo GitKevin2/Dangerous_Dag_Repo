@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="MovePath" type="Path2D"]
+
+[node name="follow" type="PathFollow2D" parent="."]
+
+[node name="position" type="Position2D" parent="follow"]

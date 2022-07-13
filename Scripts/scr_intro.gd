@@ -1,5 +1,4 @@
 extends Node2D
-class_name Intro
 
 onready var player: Player = $Player;
 

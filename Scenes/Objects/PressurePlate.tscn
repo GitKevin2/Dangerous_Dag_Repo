@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/scr_trigger_press.gd" type="Script" id=1]
+[ext_resource path="res://Tilemaps/temple/tile_temple.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12, 8 )
+
+[node name="PressurePlate" type="Area2D"]
+process_priority = 2
+script = ExtResource( 1 )
+Actor_Objects = [ "res://Scripts/scr_player.gd" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 24 )
+shape = SubResource( 1 )
+
+[node name="spr_plate" type="Sprite" parent="."]
+position = Vector2( -16, 0 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 0, 32, 32 )

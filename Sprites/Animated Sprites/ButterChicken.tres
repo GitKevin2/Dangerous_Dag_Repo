@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" load_steps=12 format=2]
+
+[ext_resource path="res://Sprites/Pies/ButterChickenIdle0.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Pies/ButterChickenIdle1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Pies/ButterChickenIdle2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Pies/ButterChickenIdle3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Pies/MincePieIdle3.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Pies/MincePieIdle1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Pies/MincePieIdle2.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Pies/MincePieIdle0.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Pies/SteaknCheeseIdle3.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Pies/SteaknCheeseIdle2.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Pies/SteaknCheeseIdle1.png" type="Texture" id=11]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "ButterChicken",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "MincePie",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "SteakAndCheese",
+"speed": 5.0
+} ]
