@@ -99,9 +99,6 @@ margin_bottom = 1024.0
 texture = ExtResource( 22 )
 expand = true
 stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Portal" parent="." instance=ExtResource( 19 )]
 position = Vector2( 7808, 128 )
@@ -125,6 +122,16 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="deadzone2"]
+shape = SubResource( 1 )
+
+[node name="deadzone3" type="Area2D" parent="."]
+position = Vector2( 5863, 822 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deadzone3"]
 shape = SubResource( 1 )
 
 [node name="edge_left" type="StaticBody2D" parent="."]
